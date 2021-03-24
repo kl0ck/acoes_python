@@ -1,1 +1,5 @@
 mydatabase.db
+*.pyc
+*.pyo
+bin
+__pycache__
