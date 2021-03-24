@@ -1,9 +1,11 @@
 import sys
+
 from numeroParser import NumeroParser
 from tipoOperacaoParser import TipoOperacaoParser
 from dataParser import DataParser
 from tickerParser import TickerParser
 from operacao import Operacao
+from database import Database
 
 #print(sys.argv)
 
@@ -79,7 +81,7 @@ for line in lines:
         print("Preço inválido na linha", str(i) + ":", line)
         sys.exit(0)
 
-    operacoes.append(Operacao(data, cv, qtd, ticker, preco))
+    operacoes.append(Operacao(data, cv, qtd, ticker, preco, ""))
 
 print()
 print("Leitura do arquivo " + arquivo + " concluída.")
@@ -92,3 +94,8 @@ for o in operacoes:
     print(o)
 
 print()
+
+db = Database()
+for o in operacoes:
+    db.add(o)
+db.list()
