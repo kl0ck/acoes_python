@@ -1,9 +1,5 @@
 import sys
-
-from numeroParser import NumeroParser
-from tipoOperacaoParser import TipoOperacaoParser
-from dataParser import DataParser
-from tickerParser import TickerParser
+import parsers
 from operacao import Operacao
 from database import Database
 
@@ -26,10 +22,10 @@ lines = f.readlines()
 
 print("Extraindo operações...\n")
 
-dataParser = DataParser()
-tipoOperacaoParser = TipoOperacaoParser()
-numeroParser = NumeroParser()
-tickerParser = TickerParser()
+dataParser = parsers.DataParser()
+tipoOperacaoParser = parsers.TipoOperacaoParser()
+numeroParser = parsers.NumeroParser()
+tickerParser = parsers.TickerParser()
 
 def isComentario(txt):
     if txt.startswith("#"):
@@ -98,4 +94,4 @@ print()
 db = Database()
 for o in operacoes:
     db.add(o)
-db.list()
+
