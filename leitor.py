@@ -1,5 +1,6 @@
 import sys
 import parsers
+from rn import RN
 from operacao import Operacao
 from database import Database
 
@@ -15,10 +16,17 @@ print()
 print("Lendo arquivo " + arquivo + "...")
 print()
 
-f = open(arquivo, "r", encoding="utf-8")
-
-lines = f.readlines()
-#print(*lines)
+lines = None
+try:
+    f = open(arquivo, "r", encoding="UTF-8")
+    lines = f.readlines()
+    #print(*lines)
+except UnicodeDecodeError:
+    f = open(arquivo, "r", encoding="ISO-8859-1")
+    lines = f.readlines()
+except:
+    print("Não foi possível ler o arquivo [" + arquivo + "].")
+    sys.exit(0)
 
 print("Extraindo operações...\n")
 
@@ -45,7 +53,7 @@ for line in lines:
     line = line.strip()
     i+=1
 
-    print(str(i).zfill(3), line)
+    print(str(i).zfill(4), line)
 
     if isEmBranco(line):
         continue
@@ -77,21 +85,20 @@ for line in lines:
         print("Preço inválido na linha", str(i) + ":", line)
         sys.exit(0)
 
-    operacoes.append(Operacao(data, cv, qtd, ticker, preco, ""))
+    operacoes.append(Operacao(None, data, cv, qtd, ticker, preco, ""))
 
 print()
 print("Leitura do arquivo " + arquivo + " concluída.")
 print()
 
-print("Operações: ")
+#print("Operações: ")
+#print()
+
+#for o in operacoes:
+#    print(o)
+
 print()
 
-for o in operacoes:
-    print(o)
-
-print()
-
-db = Database()
-for o in operacoes:
-    db.add(o)
-
+rn = RN(operacoes)
+pm = rn.precoMedio("B3SA3", "C")
+print("Preço médio = " + str(pm))
