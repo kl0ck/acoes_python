@@ -16,17 +16,26 @@ class RN:
         db = self.db
         l = db.listarOperacoesPorTicker(ticker)
 
-        somatorio = 0
+        somatorioPonderado = 0
+        somatorioPesos = 0
 
         for o in l:
-            if (o.isCompra() and cv.upper() == 'C'):
-                somatorio += converters.toDecimal(o.preco)
-                print(o)
-            elif (o.isVenda() and cv.upper() == 'V'):
-                somatorio += converters.toDecimal(o.preco)
-                print(o)
-        
-        return round(somatorio / l.__len__(), 2)
+            if (cv.upper() != o.cv.upper()):
+                # ignora operação se não é do tipo especificado no método
+                continue
+
+            qtd = converters.toDecimal(o.qtd)
+            preco = converters.toDecimal(o.preco)
+
+            somatorioPonderado += qtd * preco
+            somatorioPesos += qtd
+            #print(o)
+
+        # média ponderada
+        if (somatorioPesos > 0):
+            return round(somatorioPonderado / somatorioPesos, 2)
+        else:
+            return 0
 
     def listarOperacoes(self) -> list:
         return self.db.listarOperacoes()

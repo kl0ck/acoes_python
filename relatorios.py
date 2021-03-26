@@ -22,15 +22,14 @@ class RelatorioPrecoMedio:
 
         #print("mapOperacoes = " + str(mapOperacoes))
 
-        print("Preço médio:")
         for ticker in ativos:
             precoMedioCompra = rn.precoMedio(ticker, 'C')
             if precoMedioCompra > 0:
-                print(f"  C {ticker} {precoMedioCompra}") 
+                print(f"Preço médio C {ticker} = {precoMedioCompra}") 
 
             precoMedioVenda = rn.precoMedio(ticker, 'V')
             if precoMedioVenda > 0:
-                print(f"  V {ticker} {precoMedioVenda}")
+                print(f"Preço médio V {ticker} = {precoMedioVenda}")
 
     def pdf(self):
         pass

@@ -89,6 +89,8 @@ for line in lines:
     operacoes.append(Operacao(None, data, cv, qtd, ticker, preco, ""))
 
 print()
+print(operacoes.__len__(), "operações.")
+print()
 print("Leitura do arquivo " + arquivo + " concluída.")
 print()
 
@@ -102,11 +104,11 @@ print("===========")
 
 rn = RN(operacoes)
 
-#pm = rn.precoMedio("EQTL3", "C")
-#print("Preço médio = " + str(pm))
 print()
 
-print("Ativos = " + str(rn.ativos()))
+print("Ativos negociados = " + str(rn.ativos()))
+
+print()
 
 relatorio = relatorios.RelatorioPrecoMedio(rn)
 relatorio.txt()
