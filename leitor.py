@@ -92,6 +92,10 @@ print()
 print("Leitura do arquivo " + arquivo + " concluída.")
 print()
 
+"""
+TODO: ÁREA DE TESTES - MOVER PARA TESTES UNITÁRIOS
+"""
+
 print("===========")
 print("RESULTADOS:")
 print("===========")
