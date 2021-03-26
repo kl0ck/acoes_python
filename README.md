@@ -1,6 +1,6 @@
 # acoes_python
 
-Arquivo principal: leitor.py  
+Arquivo principal: `leitor.py`  
 
 Exemplo de uso:  
   `python leitor.py operacoes.txt`  
