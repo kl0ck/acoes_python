@@ -3,6 +3,7 @@ import parsers
 from rn import RN
 from operacao import Operacao
 from database import Database
+import relatorios
 
 #print(sys.argv)
 
@@ -91,14 +92,19 @@ print()
 print("Leitura do arquivo " + arquivo + " concluída.")
 print()
 
-#print("Operações: ")
-#print()
-
-#for o in operacoes:
-#    print(o)
-
-print()
+print("===========")
+print("RESULTADOS:")
+print("===========")
 
 rn = RN(operacoes)
-pm = rn.precoMedio("B3SA3", "C")
-print("Preço médio = " + str(pm))
+
+#pm = rn.precoMedio("EQTL3", "C")
+#print("Preço médio = " + str(pm))
+print()
+
+print("Ativos = " + str(rn.ativos()))
+
+relatorio = relatorios.RelatorioPrecoMedio(rn)
+relatorio.txt()
+
+#C:\Users\Carlos\Desktop\operacoes-2019-2021.txt

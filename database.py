@@ -14,7 +14,7 @@ class Database:
 
         con.commit()
 
-    def add(self, operacao):
+    def addOperacao(self, operacao):
         con = self.con
         c = con.cursor()
 
@@ -23,7 +23,7 @@ class Database:
 
         con.commit()
 
-    def list(self):
+    def listarOperacoes(self) -> list:
         con = self.con
         c = con.cursor()
 
@@ -31,23 +31,24 @@ class Database:
 
         rows = c.fetchall()
 
-        #for r in rows:
-        #    print(r)
+        i = 0
+        for r in rows:
+            rows[i] = converters.toOperacao(r)
+            i+=1
 
         return rows
 
-    def listarPorTicker(self, ticker):
+    def listarOperacoesPorTicker(self, ticker) -> list:
         con = self.con
         c = con.cursor()
 
-        c.execute("SELECT * FROM operacao WHERE ticker = ? ORDER BY data", (ticker,))
+        c.execute("SELECT * FROM operacao WHERE ticker = ?", (ticker,))
 
         rows = c.fetchall()
 
         i = 0
         for r in rows:
             rows[i] = converters.toOperacao(r)
-            #print(rows[i])
             i+=1
 
         return rows
