@@ -8,7 +8,7 @@ import relatorios
 dollar = """
 ░███████╗
 ██╔██╔══╝
-╚██████╗░  Ações Python
+╚██████╗░  MeusPila
 ░╚═██╔██╗
 ███████╔╝
 ╚══════╝░
