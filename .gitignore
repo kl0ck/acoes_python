@@ -1,5 +1,5 @@
-mydatabase.db
 *.pyc
 *.pyo
 bin
 __pycache__
+output

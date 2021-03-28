@@ -5,6 +5,17 @@ from operacao import Operacao
 from database import Database
 import relatorios
 
+dollar = """
+░███████╗
+██╔██╔══╝
+╚██████╗░  Ações Python
+░╚═██╔██╗
+███████╔╝
+╚══════╝░
+"""
+
+print(dollar)
+
 #print(sys.argv)
 
 if len(sys.argv) == 1:
@@ -13,7 +24,6 @@ if len(sys.argv) == 1:
 
 arquivo = sys.argv[1]
 
-print()
 print("Lendo arquivo " + arquivo + "...")
 print()
 
@@ -29,7 +39,8 @@ except:
     print("Não foi possível ler o arquivo [" + arquivo + "].")
     sys.exit(0)
 
-print("Extraindo operações...\n")
+print("Extraindo operações...")
+print()
 
 dataParser = parsers.DataParser()
 tipoOperacaoParser = parsers.TipoOperacaoParser()
@@ -54,7 +65,7 @@ for line in lines:
     line = line.strip()
     i+=1
 
-    print(str(i).zfill(4), line)
+    #print(str(i).zfill(4), line)
 
     if isEmBranco(line):
         continue
@@ -88,29 +99,16 @@ for line in lines:
 
     operacoes.append(Operacao(None, data, cv, qtd, ticker, preco, ""))
 
-print()
-print(operacoes.__len__(), "operações.")
+print(operacoes.__len__(), "operações extraídas.")
 print()
 print("Leitura do arquivo " + arquivo + " concluída.")
 print()
 
-"""
-TODO: ÁREA DE TESTES - MOVER PARA TESTES UNITÁRIOS
-"""
-
-print("===========")
-print("RESULTADOS:")
-print("===========")
-
 rn = RN(operacoes)
-
-print()
-
-print("Ativos negociados = " + str(rn.ativos()))
-
-print()
-
 relatorio = relatorios.RelatorioPrecoMedio(rn)
 relatorio.txt()
+
+print()
+print("Fim.")
 
 #C:\Users\Carlos\Desktop\operacoes-2019-2021.txt
