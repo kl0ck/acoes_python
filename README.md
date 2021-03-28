@@ -1,4 +1,11 @@
-# acoes_python
+
+░███████╗  
+██╔██╔══╝  
+╚██████╗░  Ações Python beta  
+░╚═██╔██╗  
+███████╔╝  
+╚══════╝░  
+
 
 Arquivo principal: `leitor.py`  
 
