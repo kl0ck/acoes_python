@@ -6,7 +6,7 @@
 ███████╔╝  
 ╚══════╝░  
 
-### EM CONSTRUÇÃO
+### EM CONSTRUÇÃO...
 
 Arquivo principal: `leitor.py`  
 
